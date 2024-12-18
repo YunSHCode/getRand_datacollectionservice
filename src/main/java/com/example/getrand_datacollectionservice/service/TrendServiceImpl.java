@@ -22,39 +22,28 @@ public class TrendServiceImpl implements TrendService {
     private String apiKey;
 
     @Override
-    public void monthTrend() {
+    public void pastOneYear() {
         try {
             String jsonResponse = apiService.defaultTrend("google_trends", "develop", "today 12-m", apiKey);
             JsonNode rootNode = mapper.readTree(jsonResponse);
             JsonNode timelineData = rootNode.path("interest_over_time").path("timeline_data");
             System.out.println(timelineData);
 
-            List<defaultTrendMonthsDTO> defaultTrending = new ArrayList<>();
+            List<DefaultPastOYDTO> defaultTrending = new ArrayList<>();
 
             if (timelineData != null && timelineData.isArray()) { // timelineData가 배열인지 확인
                 for (JsonNode node : timelineData) {
                     // defaultTrendMonthsDTO 객체 생성
-                    defaultTrendMonthsDTO dto = new defaultTrendMonthsDTO();
+                    DefaultPastOYDTO dto = new DefaultPastOYDTO();
                     dto.setDate(node.get("date").asText());
-
-                    // values 필드 매핑
-                    List<ValuesDTO> valuesList = new ArrayList<>();
-                    JsonNode valuesArray = node.path("values");
-                    if (valuesArray != null && valuesArray.isArray()) {
-                        for (JsonNode valueNode : valuesArray) {
-                            ValuesDTO valuesDTO = new ValuesDTO();
-                            valuesDTO.setValue(valueNode.get("value").asText());
-
-                            valuesList.add(valuesDTO);
-                        }
+                    JsonNode values = node.path("values").get(0);
+                    if(values != null) {
+                        dto.setValue(values.get("value").asText());
                     }
-                    // defaultTrendMonthsDTO의 values 필드에 리스트 저장
-                    dto.setValues(valuesList);
                     defaultTrending.add(dto);
                 }
             }
-
-            System.out.println(defaultTrending);
+            dao.insertDOY(defaultTrending);
 
         } catch (JsonProcessingException e) { // readTree 예외 처리
             throw new RuntimeException(e);

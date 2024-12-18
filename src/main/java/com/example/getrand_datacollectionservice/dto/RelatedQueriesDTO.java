@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class RelatedQueriesDTO {
+public class RelatedQueriesDTO extends PublicInfo{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String query;
     private String value;
     private int extractedValue;

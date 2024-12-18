@@ -6,9 +6,19 @@ spring:
     name: getRand_datacollectionservice
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/myerp?serverTimezone=UTC
-    username: root
+    url: jdbc:mysql://127.0.0.1:3306/getrand?serverTimezone=Asia/Seoul
+    username: mytest
     password: 1234
+
+  jpa:
+    show-sql: true
+    hibernate:
+#      ddl-auto: create
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
 
 eureka:
   client:
@@ -22,3 +32,12 @@ eureka:
 
 serp:
   api-key: bd471ed09868f3f7f787aca90100e0ef547d588900f4832cb94aea8282388f23
+
+logging:
+  level:
+    org:
+      hibernate:
+        sql: debug
+        type:
+          descriptor:
+            sql: trace

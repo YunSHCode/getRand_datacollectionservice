@@ -11,11 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class TrendAPIController {
     private final TrendService service;
-
-    @GetMapping("/defaultTrendYear")
+    @GetMapping("/defaultPastOY")
     public String defaultTrendYear() {
-        service.monthTrend();
-
+        service.pastOneYear();
         return "ok";
     }
 

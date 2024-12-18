@@ -5,17 +5,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name = "related_topics")
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
-public class RelatedTopicsDTO extends PublicInfo{
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name ="default_months")
+public class DefaultPastOYDTO extends PublicInfo{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String title;
-    private String type;
+    private String date;
     private String value;
-    private int extractedValue;
 }
+
