@@ -41,3 +41,7 @@ logging:
         type:
           descriptor:
             sql: trace
+
+schedule:
+  cron: 00 00 10 * * 1
+  use: true
