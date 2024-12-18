@@ -12,6 +12,6 @@ import java.util.List;
 @NoArgsConstructor
 public class defaultTrendMonthsDTO {
     private String date;
-    List<defaultTrendMonthsDTO> values = new ArrayList<>();
+    List<ValuesDTO> values = new ArrayList<>();
 }
 

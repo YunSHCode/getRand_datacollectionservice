@@ -22,37 +22,40 @@ public class TrendServiceImpl implements TrendService {
     private String apiKey;
 
     @Override
-    public void yearTrend() {
+    public void monthTrend() {
         try {
             String jsonResponse = apiService.defaultTrend("google_trends", "develop", "today 12-m", apiKey);
             JsonNode rootNode = mapper.readTree(jsonResponse);
-            JsonNode timelineData = rootNode.path("interest_over_time").get("timeline_data");
-            List<defaultTrendMonthsDTO> defaultTrending = new ArrayList<>();
+            JsonNode timelineData = rootNode.path("interest_over_time").path("timeline_data");
             System.out.println(timelineData);
+
+            List<defaultTrendMonthsDTO> defaultTrending = new ArrayList<>();
 
             if (timelineData != null && timelineData.isArray()) { // timelineData가 배열인지 확인
                 for (JsonNode node : timelineData) {
+                    // defaultTrendMonthsDTO 객체 생성
                     defaultTrendMonthsDTO dto = new defaultTrendMonthsDTO();
-                    ValuesDTO valuesDTO = new ValuesDTO();
+                    dto.setDate(node.get("date").asText());
 
-                    // JsonNode 그대로 활용하여 값 설정
-                    if (node.has("query")) {
-                        valuesDTO.setQuery(node.get("query").asText());
-                    }
-                    if (node.has("value")) {
-                        valuesDTO.setValue(node.get("value").asText());
-                    }
-                    if (node.has("date")) {
-                        dto.setDate(node.get("date").asText());
-                    }
+                    // values 필드 매핑
+                    List<ValuesDTO> valuesList = new ArrayList<>();
+                    JsonNode valuesArray = node.path("values");
+                    if (valuesArray != null && valuesArray.isArray()) {
+                        for (JsonNode valueNode : valuesArray) {
+                            ValuesDTO valuesDTO = new ValuesDTO();
+                            valuesDTO.setValue(valueNode.get("value").asText());
 
-                    // dto.setValues(valuesDTO); // DTO 내 Values 설정
-                    System.out.println(dto.getDate());
-                    System.out.println(valuesDTO.getQuery());
-                    System.out.println(valuesDTO.getValue());
+                            valuesList.add(valuesDTO);
+                        }
+                    }
+                    // defaultTrendMonthsDTO의 values 필드에 리스트 저장
+                    dto.setValues(valuesList);
                     defaultTrending.add(dto);
                 }
             }
+
+            System.out.println(defaultTrending);
+
         } catch (JsonProcessingException e) { // readTree 예외 처리
             throw new RuntimeException(e);
         }

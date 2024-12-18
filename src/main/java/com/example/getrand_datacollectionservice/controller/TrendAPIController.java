@@ -14,7 +14,7 @@ public class TrendAPIController {
 
     @GetMapping("/defaultTrendYear")
     public String defaultTrendYear() {
-        service.yearTrend();
+        service.monthTrend();
 
         return "ok";
     }
