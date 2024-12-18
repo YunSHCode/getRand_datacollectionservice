@@ -18,4 +18,22 @@ public class TrendAPIController {
 
         return "ok";
     }
+
+    @GetMapping("/realtime")
+    public String realtime() {
+        service.fetchRealTimeTrend();
+        return "ok";
+    }
+
+    @GetMapping("/relatedQueries")
+    public String relatedQueries() {
+        service.fetchRelatedQueries();
+        return "ok";
+    }
+
+    @GetMapping("/relatedTopics")
+    public String relatedTopics() {
+        service.fetchRelatedTopics();
+        return "ok";
+    }
 }
