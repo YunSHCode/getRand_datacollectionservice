@@ -40,4 +40,24 @@ public class TrendDAOImpl implements TrendDAO {
     public void insertDOY(List<DefaultPastOYDTO> dtos) {
         defaultPastOYRepository.saveAll(dtos);
     }
+
+    @Override
+    public void deleteRtt() {
+        rtRepository.deleteAll();
+    }
+
+    @Override
+    public void deleteRq() {
+        relatedQueriesRepository.deleteAll();
+    }
+
+    @Override
+    public void deleteRt() {
+        relatedTopicsRepository.deleteAll();
+    }
+
+    @Override
+    public void deleteDOY() {
+        defaultPastOYRepository.deleteAll();
+    }
 }

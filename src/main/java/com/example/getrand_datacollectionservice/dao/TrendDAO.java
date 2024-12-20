@@ -12,5 +12,8 @@ public interface TrendDAO {
     void insertRq(List<RelatedQueriesDTO> dto);
     void insertRt(List<RelatedTopicsDTO> dto);
     void insertDOY(List<DefaultPastOYDTO> dto);
-
+    void deleteRtt();
+    void deleteRq();
+    void deleteRt();
+    void deleteDOY();
 }

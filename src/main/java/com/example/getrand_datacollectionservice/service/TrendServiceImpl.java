@@ -138,4 +138,24 @@ public class TrendServiceImpl implements TrendService {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public void pastOneYearDeleteAll() {
+        dao.deleteDOY();
+    }
+
+    @Override
+    public void fetchRealTimeTrendDeleteAll() {
+        dao.deleteRtt();
+    }
+
+    @Override
+    public void fetchRelatedQueriesDeleteAll() {
+        dao.deleteRq();
+    }
+
+    @Override
+    public void fetchRelatedTopicsDeleteAll() {
+        dao.deleteRt();
+    }
 }
