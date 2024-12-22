@@ -1,4 +1,4 @@
-package com.example.getrand_datacollectionservice.dto;
+package com.example.getrand_datacollectionservice.entity;
 
 import jakarta.persistence.MappedSuperclass;
 import lombok.Data;

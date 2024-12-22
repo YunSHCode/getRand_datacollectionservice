@@ -1,8 +1,8 @@
 package com.example.getrand_datacollectionservice.repository;
 
-import com.example.getrand_datacollectionservice.dto.RealTimeTrendDTO;
+import com.example.getrand_datacollectionservice.entity.RealTimeTrendEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface RealTimeTrendRepository extends JpaRepository<RealTimeTrendDTO, Long> {
+public interface RealTimeTrendRepository extends JpaRepository<RealTimeTrendEntity, Long> {
 
 }

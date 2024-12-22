@@ -1,14 +1,17 @@
 package com.example.getrand_datacollectionservice.dao;
 
-import com.example.getrand_datacollectionservice.dto.DefaultPastOYDTO;
-import com.example.getrand_datacollectionservice.dto.RealTimeTrendDTO;
-import com.example.getrand_datacollectionservice.dto.RelatedQueriesDTO;
-import com.example.getrand_datacollectionservice.dto.RelatedTopicsDTO;
+import com.example.getrand_datacollectionservice.entity.DefaultPastOYEntity;
+import com.example.getrand_datacollectionservice.entity.RealTimeTrendEntity;
+import com.example.getrand_datacollectionservice.entity.RelatedQueriesEntity;
+import com.example.getrand_datacollectionservice.entity.RelatedTopicsEntity;
 import com.example.getrand_datacollectionservice.repository.DefaultPastOYRepository;
 import com.example.getrand_datacollectionservice.repository.RealTimeTrendRepository;
 import com.example.getrand_datacollectionservice.repository.RelatedQueriesRepository;
 import com.example.getrand_datacollectionservice.repository.RelatedTopicsRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -22,22 +25,22 @@ public class TrendDAOImpl implements TrendDAO {
     private final DefaultPastOYRepository defaultPastOYRepository;
 
     @Override
-    public void insertRtt(List<RealTimeTrendDTO> dtos) {
+    public void insertRtt(List<RealTimeTrendEntity> dtos) {
         rtRepository.saveAll(dtos);
     }
 
     @Override
-    public void insertRq(List<RelatedQueriesDTO> dtos) {
+    public void insertRq(List<RelatedQueriesEntity> dtos) {
         relatedQueriesRepository.saveAll(dtos);
     }
 
     @Override
-    public void insertRt(List<RelatedTopicsDTO> dtos) {
+    public void insertRt(List<RelatedTopicsEntity> dtos) {
         relatedTopicsRepository.saveAll(dtos);
     }
 
     @Override
-    public void insertDOY(List<DefaultPastOYDTO> dtos) {
+    public void insertDOY(List<DefaultPastOYEntity> dtos) {
         defaultPastOYRepository.saveAll(dtos);
     }
 
@@ -59,5 +62,10 @@ public class TrendDAOImpl implements TrendDAO {
     @Override
     public void deleteDOY() {
         defaultPastOYRepository.deleteAll();
+    }
+
+    @Override
+    public void findDOY() {
+        defaultPastOYRepository.findAll();
     }
 }

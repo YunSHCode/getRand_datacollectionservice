@@ -1,4 +1,4 @@
-package com.example.getrand_datacollectionservice.dto;
+package com.example.getrand_datacollectionservice.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name ="default_months")
-public class DefaultPastOYDTO extends PublicInfo{
+@Table(name ="default_pastoneyear")
+public class DefaultPastOYEntity extends PublicInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
