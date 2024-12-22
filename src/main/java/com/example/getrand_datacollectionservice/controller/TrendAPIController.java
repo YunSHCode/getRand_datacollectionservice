@@ -18,21 +18,6 @@ public class TrendAPIController {
         return "ok";
     }
 
-    @GetMapping("/defaultPastOY/update")
-    public String UpdateDefaultTrendYear() {
-        service.pastOneYearDeleteAll();
-        service.pastOneYear();
-        return "ok";
-    }
-
-    @PostMapping("/defaultPastOY/findall")
-    @ResponseBody
-    public List<DefaultPastOYResponseDTO> findDefaultTrendYear() {
-        DefaultPastOYResponseDTO dto = new DefaultPastOYResponseDTO();
-        service.pastOneYearFindAll();
-        return null;
-    }
-
     @GetMapping("/realtime")
     public String realtime() {
         service.fetchRealTimeTrend();

@@ -60,12 +60,14 @@ public class TrendDAOImpl implements TrendDAO {
     }
 
     @Override
+    @Transactional
     public void deleteDOY() {
         defaultPastOYRepository.deleteAll();
+        defaultPastOYRepository.resetAutoIncrement();
     }
 
     @Override
-    public void findDOY() {
-        defaultPastOYRepository.findAll();
+    public List<DefaultPastOYEntity> findDOY() {
+        return defaultPastOYRepository.findAll();
     }
 }

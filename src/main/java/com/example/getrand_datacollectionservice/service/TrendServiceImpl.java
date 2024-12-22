@@ -165,8 +165,16 @@ public class TrendServiceImpl implements TrendService {
     }
 
     @Override
-    public void pastOneYearFindAll() {
-        dao.findDOY();
+    public List<DefaultPastOYResponseDTO> pastOneYearFindAll() {
+        List<DefaultPastOYEntity> poyList = dao.findDOY();
+        List<DefaultPastOYResponseDTO> poyResponseList = new ArrayList<>();
+        for (DefaultPastOYEntity poy : poyList) {
+            DefaultPastOYResponseDTO poyResponse = new DefaultPastOYResponseDTO();
+            poyResponse.setDate(poy.getDate());
+            poyResponse.setValue(poy.getValue());
+            poyResponseList.add(poyResponse);
+        }
+        return poyResponseList;
     }
 
 
