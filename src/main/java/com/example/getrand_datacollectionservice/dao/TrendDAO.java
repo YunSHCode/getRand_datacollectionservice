@@ -19,5 +19,5 @@ public interface TrendDAO {
     void deleteRq();
     void deleteRt();
     void deleteDOY();
-    void findDOY();
+    List<DefaultPastOYEntity> findDOY();
 }

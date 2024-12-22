@@ -1,5 +1,9 @@
 package com.example.getrand_datacollectionservice.service;
 
+import com.example.getrand_datacollectionservice.dto.DefaultPastOYResponseDTO;
+
+import java.util.List;
+
 public interface TrendService {
     void pastOneYear();
     void fetchRealTimeTrend();
@@ -9,5 +13,5 @@ public interface TrendService {
     void fetchRealTimeTrendDeleteAll();
     void fetchRelatedQueriesDeleteAll();
     void fetchRelatedTopicsDeleteAll();
-    void pastOneYearFindAll();
+    List<DefaultPastOYResponseDTO> pastOneYearFindAll();
 }
