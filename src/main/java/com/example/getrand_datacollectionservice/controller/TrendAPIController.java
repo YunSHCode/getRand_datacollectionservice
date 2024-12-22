@@ -1,10 +1,11 @@
 package com.example.getrand_datacollectionservice.controller;
 
+import com.example.getrand_datacollectionservice.dto.DefaultPastOYResponseDTO;
 import com.example.getrand_datacollectionservice.service.TrendService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/google")
@@ -22,6 +23,14 @@ public class TrendAPIController {
         service.pastOneYearDeleteAll();
         service.pastOneYear();
         return "ok";
+    }
+
+    @PostMapping("/defaultPastOY/findall")
+    @ResponseBody
+    public List<DefaultPastOYResponseDTO> findDefaultTrendYear() {
+        DefaultPastOYResponseDTO dto = new DefaultPastOYResponseDTO();
+        service.pastOneYearFindAll();
+        return null;
     }
 
     @GetMapping("/realtime")

@@ -1,7 +1,7 @@
 package com.example.getrand_datacollectionservice.repository;
 
-import com.example.getrand_datacollectionservice.dto.RelatedTopicsDTO;
+import com.example.getrand_datacollectionservice.entity.RelatedTopicsEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface RelatedTopicsRepository extends JpaRepository<RelatedTopicsDTO, Long> {
+public interface RelatedTopicsRepository extends JpaRepository<RelatedTopicsEntity, Long> {
 }

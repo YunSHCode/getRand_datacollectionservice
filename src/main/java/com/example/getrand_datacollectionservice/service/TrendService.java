@@ -9,4 +9,5 @@ public interface TrendService {
     void fetchRealTimeTrendDeleteAll();
     void fetchRelatedQueriesDeleteAll();
     void fetchRelatedTopicsDeleteAll();
+    void pastOneYearFindAll();
 }

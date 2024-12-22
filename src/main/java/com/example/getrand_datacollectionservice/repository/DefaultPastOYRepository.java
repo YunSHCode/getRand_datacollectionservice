@@ -1,7 +1,7 @@
 package com.example.getrand_datacollectionservice.repository;
 
-import com.example.getrand_datacollectionservice.dto.DefaultPastOYDTO;
+import com.example.getrand_datacollectionservice.entity.DefaultPastOYEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface DefaultPastOYRepository extends JpaRepository<DefaultPastOYDTO, Long> {
+public interface DefaultPastOYRepository extends JpaRepository<DefaultPastOYEntity, Long> {
 }
