@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -175,6 +176,54 @@ public class TrendServiceImpl implements TrendService {
             poyResponseList.add(poyResponse);
         }
         return poyResponseList;
+    }
+
+    @Override
+    public List<RealTimeTrendResponseDTO> realTimeTrendFindAll() {
+        List<RealTimeTrendEntity> list = dao.findRtt();
+        System.out.println(list);
+        System.out.println(list.stream().map(RealTimeTrendEntity::getQuery).collect(Collectors.toList()));
+        return list.stream()
+                .map(entity -> new RealTimeTrendResponseDTO(
+                        entity.getId(),
+                        entity.getQuery(),
+                        entity.getSearchVolume(),
+                        entity.getIncreasePercentage(),
+                        entity.getCreateDate(),
+                        entity.getUpdateDate()
+                ))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<RelatedTopicsResponseDTO> relatedTopicsFindAll() {
+        List<RelatedTopicsEntity> list = dao.findRt();
+        return list.stream()
+                .map(entity -> new RelatedTopicsResponseDTO(
+                        entity.getId(),
+                        entity.getTitle(),
+                        entity.getType(),
+                        entity.getValue(),
+                        entity.getExtractedValue(),
+                        entity.getCreateDate(),
+                        entity.getUpdateDate()
+                ))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<RelatedQueriesResponseDTO> relatedQueriesFindAll() {
+        List<RelatedQueriesEntity> list = dao.findRq();
+        return list.stream()
+                .map(entity -> new RelatedQueriesResponseDTO(
+                        entity.getId(),
+                        entity.getQuery(),
+                        entity.getValue(),
+                        entity.getExtractedValue(),
+                        entity.getCreateDate(),
+                        entity.getUpdateDate()
+                ))
+                .collect(Collectors.toList());
     }
 
 
