@@ -70,4 +70,19 @@ public class TrendDAOImpl implements TrendDAO {
     public List<DefaultPastOYEntity> findDOY() {
         return defaultPastOYRepository.findAll();
     }
+
+    @Override
+    public List<RealTimeTrendEntity> findRtt() {
+        return rtRepository.findAll();
+    }
+
+    @Override
+    public List<RelatedTopicsEntity> findRt() {
+        return relatedTopicsRepository.findAll();
+    }
+
+    @Override
+    public List<RelatedQueriesEntity> findRq() {
+        return relatedQueriesRepository.findAll();
+    }
 }

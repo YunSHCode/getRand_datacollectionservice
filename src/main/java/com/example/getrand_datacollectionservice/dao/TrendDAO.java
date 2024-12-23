@@ -20,4 +20,7 @@ public interface TrendDAO {
     void deleteRt();
     void deleteDOY();
     List<DefaultPastOYEntity> findDOY();
+    List<RealTimeTrendEntity> findRtt();
+    List<RelatedTopicsEntity> findRt();
+    List<RelatedQueriesEntity> findRq();
 }
