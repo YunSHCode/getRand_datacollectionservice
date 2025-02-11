@@ -16,6 +16,11 @@ import java.util.List;
 public class GatewayController {
     private final TrendService service;
 
+    @GetMapping("/health")
+    public String health() {
+        return "OK";
+    }
+
     @GetMapping("/defaultPastOY/findall")
     public List<DefaultPastOYResponseDTO> findDefaultTrendYear() {
         return service.pastOneYearFindAll();
