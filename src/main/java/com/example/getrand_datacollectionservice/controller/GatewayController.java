@@ -18,7 +18,7 @@ public class GatewayController {
 
     @GetMapping("/health")
     public String health() {
-        return "OK";
+        return "OK1";
     }
 
     @GetMapping("/defaultPastOY/findall")
